@@ -10,10 +10,33 @@
 
 /*CONTENEDOR IZQ CON LOS FORMS PARA GENERAR EL CV*/
 .constructor-cv{
+    padding: 1em;
     flex: 1;
-    background-color: blanchedalmond;
+    background-color: rgba(251, 255, 211, 0.719);
     width: 100vh;
     height: auto;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    color: black;
+}
+
+.constructor-cv form{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-radius: 6px;
+    -webkit-box-shadow: 3px 5px 8px 2px rgba(0,0,0,0.81); 
+    box-shadow: 3px 5px 8px 2px rgba(0,0,0,0.81);
+}
+
+.titulo-seccion{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
 }
 
 /*CONTENEDOR DERECHO CON LA VISTA PREVIA*/
@@ -23,17 +46,171 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: beige;
+
     height: auto;
     width: 100vh;
-    overflow-y: auto;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    word-break: break-all;
 }
 
 .cv{
     border: 2px solid black;
     border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    width: 100vh;
+}
+
+.panel-izq{
+    padding: 10px;
+    background-color: #323b4c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    flex-wrap: wrap;
+    width: 30%;
+    color: white;
+}
+
+.panel-der{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+    background-color: rgb(223, 223, 223);
+    width: 85%;
+    overflow:hidden;
+    word-wrap: break-word;
 }
 
 .preview-cv button{
     color: white;
 }
+
+.preview-img{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color:#000000;
+    height: 2px;
+    padding: 0;
+    margin: 0;
+  }
+
+
+.panel-izq p, .panel-der p{
+    margin: 0;
+}
+
+/*ESTILOS PARA LOS INPUTS TIPO MATERIAL DESING*/
+.group{ 
+    position:relative; 
+    margin-bottom:20px; 
+    margin-top: 5px;
+  }
+  input{
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:230px;
+    border:none;
+    border-bottom:1px solid #757575;
+    border-radius: 8px;
+  }
+
+  #direccion-input, #direccion-bar{
+    width: 485px;
+  }
+
+
+  
+  input:focus 		{ outline:none; }
+  
+  /* LABEL ======================================= */
+  label 				 {
+    color:#999; 
+    font-size:18px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:10px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  
+  /* active state */
+  input:focus ~ label, input:valid ~ label 		{
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+  }
+  
+  /* BOTTOM BARS ================================= */
+  .bar 	{ position:relative; display:block; width:230px; }
+  .bar:before, .bar:after 	{
+    content:'';
+    height:2px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#5264AE; 
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  .bar:before {
+    left:50%;
+  }
+  .bar:after {
+    right:50%; 
+  }
+  
+  /* active state */
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+  }
+  
+  /* HIGHLIGHTER ================================== */
+  .highlight {
+    position:absolute;
+    height:60%; 
+    width:100px; 
+    top:25%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+  }
+  
+  /* active state */
+  input:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+  }
+  
+  /* ANIMATIONS ================ */
+  @-webkit-keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @-moz-keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
