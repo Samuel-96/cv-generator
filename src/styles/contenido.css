@@ -17,7 +17,7 @@
     height: auto;
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 5px 5px 15px 5px #000000;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 .constructor-cv form{
@@ -46,7 +46,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     height: auto;
     width: 100vh;
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
@@ -113,6 +112,11 @@ hr {
     margin: 0;
 }
 
+.botones-añadir-seccion{
+  display: flex;
+  gap: 20px;
+}
+
 /*ESTILOS PARA LOS INPUTS TIPO MATERIAL DESING*/
 .group{ 
     position:relative; 
@@ -133,7 +137,9 @@ hr {
     width: 485px;
   }
 
-
+  #año-finalizacion{
+    width: 300px;
+  }
   
   input:focus 		{ outline:none; }
   

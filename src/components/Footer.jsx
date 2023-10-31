@@ -1,4 +1,4 @@
-import Logo from "../../public/github-logo.png"
+import Logo from "../assets/github-logo.png"
 import "../styles/footer.css"
 export default function Footer(){
 
