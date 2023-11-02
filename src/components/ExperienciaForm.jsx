@@ -2,10 +2,10 @@ export default function ExperienciaForm(props){
     return(
         <form action="">
                     <div className="group">      
-                        <input id="año-trabajo" type="numer" required onChange={props.añadirTexto}/>
+                        <input id="año-trabajo" type="number" required onChange={props.añadirTexto}/>
                         <span className="highlight"></span>
                         <span className="bar"></span>
-                        <label >Año</label>
+                        <label>Año</label>
                     </div>
 
                     <div className="group">      
@@ -23,10 +23,9 @@ export default function ExperienciaForm(props){
                     </div>
 
                     <div className="group">      
-                        <input id="descripcion" type="number" required onChange={props.añadirTexto}/>
+                        <textarea placeholder="Descripción del puesto de trabajo" id="descripcion" type="text" required onChange={props.añadirTexto} rows="5" cols="60"/>
                         <span className="highlight"></span>
                         <span className="bar"></span>
-                        <label >Descripción</label>
                     </div>
 
                     <div className="botones-añadir-seccion">

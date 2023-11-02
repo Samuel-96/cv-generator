@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
+import html2pdf from 'html2pdf.js'
+
 import "../styles/contenido.css"
 import ImagenPreview from "../assets/img_avatar.png"
-import DatosPersonalesLogo from "../assets/personal-data.png"
-
+import EducacionLogo from "../assets/education.png"
+import ContactoLogo from "../assets/personal-data.png"
+import ExperiencaLogo from "../assets/work-experience.png"
 import Educacion from "./EducacionCV"
 import EducacionForm from "./EducacionForm";
 import ExperienciaForm from "./ExperienciaForm";
@@ -11,7 +14,9 @@ import Experiencia from "./ExperienciaCV";
 
 export default function Contenido(){
     let titulacion = "", centro = "", año = ""; //del form de educacion
-    let añoTrabajo = "", compañia = "", descripcion = "", posicion = "";
+    let añoTrabajo = "", compañia = "", descripcion = "", posicion = ""; //del form de experiencia
+
+    const[imagen, setImagen] = useState(ImagenPreview);
 
     const [nombre, setNombre] = useState("John Doe");
     const [profesion, setProfesion] = useState("Software developer");
@@ -82,15 +87,38 @@ export default function Contenido(){
         setExperiencia(updateExperiencia);
       }
 
+    function cambiarImagen(e){
+        const file = e.target.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file); 
+
+        reader.onload = readerEvent => {
+            const content = readerEvent.target.result;
+            setImagen(content)
+         }
+    }
+
+    function generarPdf(){
+        const cv = document.querySelector('.cv');
+
+        html2pdf()
+            .set({
+                filename: 'Curriculum - ' + nombre + '.pdf',
+                margin: 1,
+            })
+            .from(cv)
+            .save();
+    }
+
     return(
         <div className="contenedor-generador-cv">
 
             <section className="constructor-cv">
                 <div className="titulo-seccion">
-                    <img src={DatosPersonalesLogo} alt="" />
+                    <img src={ContactoLogo} alt="" />
                     <h2>Contacto</h2>
                 </div>
-                <form action="">
+                <form id="educacion" action="">
                     <div className="group">      
                         <input id="nombre" type="text" required onChange={añadirTexto}/>
                         <span className="highlight"></span>
@@ -125,18 +153,22 @@ export default function Contenido(){
                         <span id="direccion-bar" className="bar"></span>
                         <label>Dirección</label>
                     </div>
+
+                    <div className="group">
+                        <input id="file" type="file" required onChange={cambiarImagen}/>
+                    </div>
                 </form>
 
                 
                 <div className="titulo-seccion">
-                    <img src={DatosPersonalesLogo} alt="" />
+                    <img className="secciones-logo" src={EducacionLogo} alt="" />
                     <h2>Educación</h2>
                 </div>
 
                 <EducacionForm añadirTexto={añadirTexto} clickAñadir={clickAñadir} clickEliminar={clickEliminar} index={0}/>
 
                 <div className="titulo-seccion">
-                    <img src={DatosPersonalesLogo} alt="" />
+                    <img className="secciones-logo" src={ExperiencaLogo} alt="" />
                     <h2>Experiencia</h2>
                 </div>
                 <ExperienciaForm añadirTexto={añadirTexto} clickAñadir={clickAñadirExperiencia} clickEliminar={clickEliminarExperiencia} index={0}/>
@@ -147,7 +179,7 @@ export default function Contenido(){
             <section className="preview-cv">
                 <div className="cv">
                     <div className="panel-izq">
-                        <img className="preview-img" src={ImagenPreview} alt="imagen preview" />
+                        <img className="preview-img" src={imagen} alt="imagen preview" />
                         <h2>Contacto</h2>
                         <hr />
                         <h3>Teléfono</h3>
@@ -170,7 +202,7 @@ export default function Contenido(){
                     </div>
                 </div>
 
-                <button>Descargar como pdf</button>
+                <button onClick={generarPdf}>Descargar como pdf</button>
             </section>
         </div>
     )
