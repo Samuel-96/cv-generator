@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import html2pdf from 'html2pdf.js'
 
 import "../styles/contenido.css"
+
 import ImagenPreview from "../assets/img_avatar.png"
 import EducacionLogo from "../assets/education.png"
 import ContactoLogo from "../assets/personal-data.png"
@@ -12,9 +13,11 @@ import EducacionForm from "./EducacionForm";
 import ExperienciaForm from "./ExperienciaForm";
 import Experiencia from "./ExperienciaCV";
 
+let titulacion = "", centro = "", año = ""; //del form de educacion
+let añoTrabajo = "", compañia = "", descripcion = "", posicion = ""; //del form de experiencia
+
 export default function Contenido(){
-    let titulacion = "", centro = "", año = ""; //del form de educacion
-    let añoTrabajo = "", compañia = "", descripcion = "", posicion = ""; //del form de experiencia
+
 
     const[imagen, setImagen] = useState(ImagenPreview);
 
@@ -66,9 +69,23 @@ export default function Contenido(){
     }
 
     function clickEliminar(index) {
-        const updatedEducacion = educacion.filter((_, i) => i !== index);
-        setEducacion(updatedEducacion);
-      }
+        
+        const reversedEducacion = [...educacion].reverse();
+        if (reversedEducacion[index + 1] && reversedEducacion[index + 1].titulacion !== undefined) {
+            titulacion = reversedEducacion[index + 1].titulacion;
+            const updatedEducacion = reversedEducacion.filter((_, i) => i !== index);
+        
+            const restoredOrder = updatedEducacion.reverse();
+            setEducacion(restoredOrder);
+        } else {
+            const updatedEducacion = reversedEducacion.filter((_, i) => i !== index);
+        
+            const restoredOrder = updatedEducacion.reverse();
+            setEducacion(restoredOrder);
+            titulacion = "";
+            document.querySelector("#form-educacion").reset();
+        }
+    }
 
     function clickAñadirExperiencia(){
         const nuevaExperiencia = {
@@ -85,7 +102,7 @@ export default function Contenido(){
     function clickEliminarExperiencia(index) {
         const updateExperiencia = experiencia.filter((_, i) => i !== index);
         setExperiencia(updateExperiencia);
-      }
+    }
 
     function cambiarImagen(e){
         const file = e.target.files[0];
@@ -96,6 +113,10 @@ export default function Contenido(){
             const content = readerEvent.target.result;
             setImagen(content)
          }
+    }
+
+    function cambiarImagenClick(){
+        document.querySelector("#file").click();
     }
 
     function generarPdf(){
@@ -165,7 +186,7 @@ export default function Contenido(){
                     <h2>Educación</h2>
                 </div>
 
-                <EducacionForm añadirTexto={añadirTexto} clickAñadir={clickAñadir} clickEliminar={clickEliminar} index={0}/>
+                <EducacionForm añadirTexto={añadirTexto} clickAñadir={clickAñadir} clickEliminar={clickEliminar} index={0} titulacion={titulacion}/>
 
                 <div className="titulo-seccion">
                     <img className="secciones-logo" src={ExperiencaLogo} alt="" />
@@ -179,7 +200,7 @@ export default function Contenido(){
             <section className="preview-cv">
                 <div className="cv">
                     <div className="panel-izq">
-                        <img className="preview-img" src={imagen} alt="imagen preview" />
+                        <img className="preview-img" src={imagen} alt="imagen preview" onClick={cambiarImagenClick}/>
                         <h2>Contacto</h2>
                         <hr />
                         <h3>Teléfono</h3>

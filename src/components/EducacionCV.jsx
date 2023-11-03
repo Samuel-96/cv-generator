@@ -1,7 +1,6 @@
 import "../styles/educacion.css"
 
 export default function Educacion(props){
-    
      return (
         <>
             <h2>Educación</h2>

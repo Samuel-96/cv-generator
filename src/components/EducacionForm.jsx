@@ -1,6 +1,8 @@
+import Educacion from "./EducacionCV"
+
 export default function EducacionForm(props){
     return(
-        <form action="">
+        <form id="form-educacion" action="">
                     <div className="group">      
                         <input id="titulacion" type="text" required onChange={props.añadirTexto}/>
                         <span className="highlight"></span>
@@ -24,7 +26,7 @@ export default function EducacionForm(props){
 
                     <div className="botones-añadir-seccion">
                         <button type='button' onClick={props.clickAñadir}>Añadir sección</button>
-                        <button type="button" onClick={() => props.clickEliminar(props.index)}>Eliminar</button>
+                        <button type="button" onClick={() => props.clickEliminar(props.index)}>Eliminar {props.titulacion}</button>
                     </div>
         </form>
     )

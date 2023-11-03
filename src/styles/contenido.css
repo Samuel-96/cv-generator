@@ -82,6 +82,7 @@
     width: 85%;
     overflow:hidden;
     word-wrap: break-word;
+    color: #000000;
 }
 
 .preview-cv button{
