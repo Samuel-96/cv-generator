@@ -100,8 +100,21 @@ export default function Contenido(){
     }
 
     function clickEliminarExperiencia(index) {
-        const updateExperiencia = experiencia.filter((_, i) => i !== index);
-        setExperiencia(updateExperiencia);
+        const reversedExperiencia = [...experiencia].reverse();
+        if (reversedExperiencia[index + 1] && reversedExperiencia[index + 1].posicion !== undefined) {
+            posicion = reversedExperiencia[index + 1].posicion;
+            const updateExperiencia = reversedExperiencia.filter((_, i) => i !== index);
+        
+            const restoredOrder = updateExperiencia.reverse();
+            setExperiencia(restoredOrder);
+        } else {
+            const updateExperiencia = reversedExperiencia.filter((_, i) => i !== index);
+        
+            const restoredOrder = updateExperiencia.reverse();
+            setExperiencia(restoredOrder);
+            posicion = "";
+            document.querySelector("#form-experiencia").reset();
+        }
     }
 
     function cambiarImagen(e){
@@ -192,7 +205,7 @@ export default function Contenido(){
                     <img className="secciones-logo" src={ExperiencaLogo} alt="" />
                     <h2>Experiencia</h2>
                 </div>
-                <ExperienciaForm añadirTexto={añadirTexto} clickAñadir={clickAñadirExperiencia} clickEliminar={clickEliminarExperiencia} index={0}/>
+                <ExperienciaForm añadirTexto={añadirTexto} clickAñadir={clickAñadirExperiencia} clickEliminar={clickEliminarExperiencia} index={0} posicion={posicion}/>
             </section>
 
             {/*PARTE DERECHA, PREVIEW DEL CV*/}

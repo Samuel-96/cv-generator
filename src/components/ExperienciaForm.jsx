@@ -1,6 +1,6 @@
 export default function ExperienciaForm(props){
     return(
-        <form action="">
+        <form id="form-experiencia" action="">
                     <div className="group">      
                         <input id="año-trabajo" type="number" required onChange={props.añadirTexto}/>
                         <span className="highlight"></span>
@@ -30,7 +30,7 @@ export default function ExperienciaForm(props){
 
                     <div className="botones-añadir-seccion">
                         <button type='button' onClick={props.clickAñadir}>Añadir sección</button>
-                        <button type="button" onClick={() => props.clickEliminar(props.index)}>Eliminar</button>
+                        <button type="button" onClick={() => props.clickEliminar(props.index)}>Eliminar {props.posicion}</button>
                     </div>
         </form>
     )
