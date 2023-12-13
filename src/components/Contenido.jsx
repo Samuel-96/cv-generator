@@ -119,7 +119,7 @@ export default function Contenido(){
 
     function cambiarImagen(e){
         const file = e.target.files[0];
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.readAsDataURL(file); 
 
         reader.onload = readerEvent => {

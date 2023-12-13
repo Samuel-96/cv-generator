@@ -4,13 +4,10 @@ footer{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     background: #242424;
-    height: auto;
-    width: 100vw;
     color: #fff;
     font-weight: bold;
 }

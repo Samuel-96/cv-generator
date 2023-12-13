@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import Cabecera from './components/Cabecera'
 import Contenido from './components/Contenido'
@@ -10,7 +9,7 @@ function App() {
     <>
       <Cabecera />
       <Contenido />
-      <Footer></Footer>
+      <Footer />
     </>
   )
 }
