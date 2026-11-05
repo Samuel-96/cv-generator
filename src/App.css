@@ -1,12 +1,13 @@
-#root{
-  padding: 0;
+
+#root {
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  background-color: #1e436e;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+  display: block;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }

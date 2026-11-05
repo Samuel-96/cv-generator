@@ -1,8 +1,20 @@
-h1{
+.cabecera {
+    padding: 22px 30px;
+    background-color: #1e293b;
+    border-bottom: 3px solid var(--color-primary);
+    text-align: center;
+}
+
+.cabecera h1 {
     margin: 0;
-    padding: 0.3em;
-    background-color: #242424;
-    text-transform: uppercase;
-    color: white;
-    font-size: 3.2em;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.cabecera p {
+    margin: 5px 0 0;
+    color: #cbd5e1;
+    font-size: 0.9rem;
 }

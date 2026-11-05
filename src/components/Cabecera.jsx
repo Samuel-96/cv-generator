@@ -1,7 +1,10 @@
 import "../styles/cabecera.css"
 
-export default function Cabecera(){
-    return(
-        <h1>Creador de currículum</h1>
+export default function Cabecera() {
+    return (
+        <header className="cabecera">
+            <h1>CV Studio</h1>
+            <p>Diseña y personaliza tu currículum de forma sencilla.</p>
+        </header>
     )
 }

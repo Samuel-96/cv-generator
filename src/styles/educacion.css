@@ -1,7 +1,29 @@
-h4{
-    margin: 8px;
+
+h4 {
+    margin: 12px 0 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
-button{
-    color: white;
+.educacion {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.educacion-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.panel-izq h4 {
+    color: #ffffff;
+}
+
+.panel-der h4 {
+    color: #334155;
+}
+
+.panel-izq .educacion,
+.panel-der .educacion {
+    margin-bottom: 15px;
 }
